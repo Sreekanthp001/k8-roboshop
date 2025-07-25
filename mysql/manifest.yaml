@@ -32,13 +32,13 @@ spec:
         component: mysql
         project: roboshop
         tier: database
-  spec:
-    containers:
-    - name: mysql
-      image: sree9516/mysql:v1
-      envFrom:
-      - SecretRef:
-          name: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: sree9516/mysql:v1
+        envFrom:
+        - SecretRef:
+            name: mysql
 ---
 apiVersion: v1
 kind: Service
