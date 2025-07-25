@@ -26,12 +26,12 @@ spec:
       component: mysql
       project: roboshop
       tier: database
-template:
-  metadata:
-    labels:
-      component: mysql
-      project: roboshop
-      tier: database
+  template:
+    metadata:
+      labels:
+        component: mysql
+        project: roboshop
+        tier: database
   spec:
     containers:
     - name: mysql
