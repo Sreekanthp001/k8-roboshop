@@ -1,7 +1,8 @@
-apiVersion: v1 
+
+apiVersion: v1
 kind: ConfigMap
-metadata: 
-  name: shipping 
+metadata:
+  name: shipping
   namespace: roboshop
   labels:
     component: shipping
@@ -16,32 +17,35 @@ kind: Deployment
 metadata:
   name: shipping
   namespace: roboshop
+  # deployment labels
   labels:
     component: shipping
     project: roboshop
     tier: app
 spec:
   replicas: 1
+  # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
       component: shipping
       project: roboshop
       tier: app
+  # This is pod definition
   template:
     metadata:
-      labels: 
+      labels:
         component: shipping
         project: roboshop
         tier: app
     spec:
       containers:
       - name: shipping
-        image: sree9516/shipping:v1
+        image: joindevops/shipping:v1
         envFrom:
         - configMapRef:
             name: shipping
 ---
-apiVersion: v1 
+apiVersion: v1
 kind: Service
 metadata:
   name: shipping
@@ -57,5 +61,5 @@ spec:
     tier: app
   ports:
   - protocol: TCP
-    port: 8080
-    targetPort: 8080
+    port: 8080 # service port
+    targetPort: 8080 # container port
